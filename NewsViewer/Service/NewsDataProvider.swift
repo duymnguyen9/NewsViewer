@@ -23,7 +23,6 @@ class NewsDataProvider {
         
         if let url = URL(string: urlString){
             if let data = try? Data(contentsOf: url){
-                print("Got Data! trying to parse")
                 newsData = parseNewsArticles(json: data)
             }
         }
@@ -51,12 +50,11 @@ class NewsDataProvider {
             return
         }
         do {                        let data = try Data(contentsOf: mainUrl)
-                        newsData = parseNewsArticles(json: data)
-                    } catch {
-                        print(error)
-                    }
+            newsData = parseNewsArticles(json: data)
+        } catch {
+            print(error)
+        }
     }
     
-    
-    
+
 }
