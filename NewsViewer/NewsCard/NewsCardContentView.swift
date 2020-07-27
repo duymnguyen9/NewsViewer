@@ -33,7 +33,7 @@ import UIKit
         get {
             return self.imageView.image
         }
-
+        
         set(image) {
             self.imageView.image = image
         }
@@ -44,7 +44,7 @@ import UIKit
         // make the background image stays still at the center while animating
         imageView.contentMode = .center
         
-//        imageView.contentMode = .scaleToFill
+        //        imageView.contentMode = .scaleToFill
         setFontState(isHighlighted: false)
     }
     
@@ -68,6 +68,12 @@ import UIKit
     }
     
     func setFontState(isHighlighted: Bool){
-        // TODO: - ADD formatting when Card selected
+        if isHighlighted {
+            titleLabel.font = UIFont.systemFont(ofSize: 25 * GlobalConstants.cardHighlightedFactor, weight: .bold)
+            publicationLabel.font = UIFont.systemFont(ofSize: 18 * GlobalConstants.cardHighlightedFactor, weight: .semibold)
+        } else {
+            titleLabel.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+            publicationLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        }
     }
 }

@@ -20,6 +20,7 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
     
     
     
+
     @IBOutlet weak var cardBottomToRootBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -27,44 +28,43 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var newsCardContentView: NewsCardContentView!
     @IBOutlet weak var textView: UITextView!
     
-
-    
-    var newsCardViewModel: NewsCardContentViewModel! {
+    var cardViewModel: NewsCardContentViewModel! {
         didSet {
             if self.newsCardContentView != nil {
-                self.newsCardContentView.viewModel = newsCardViewModel
+                self.newsCardContentView.viewModel = cardViewModel
             }
         }
     }
-
+    
     var unhighlightedCardViewModel: NewsCardContentViewModel!
-
+    
     var isFontStateHighlighted: Bool = true {
-        didSet {
+        didSet{
             newsCardContentView.setFontState(isHighlighted: isFontStateHighlighted)
         }
     }
-
+    
     var draggingDownToDismiss = false
-
+    
     final class DismissalPanGesture: UIPanGestureRecognizer {}
     final class DismissalScreenEdgePanGesture: UIScreenEdgePanGestureRecognizer {}
-
+    
     private lazy var dismissalPanGesture: DismissalPanGesture = {
         let pan = DismissalPanGesture()
         pan.maximumNumberOfTouches = 1
         return pan
     }()
-
+    
     private lazy var dismissalScreenEdgePanGesture: DismissalScreenEdgePanGesture = {
         let pan = DismissalScreenEdgePanGesture()
         pan.edges = .left
         return pan
     }()
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if GlobalConstants.isEnabledDebugAnimatingViews {
             scrollView.layer.borderWidth = 3
             scrollView.layer.borderColor = UIColor.green.cgColor
@@ -72,15 +72,16 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
             scrollView.subviews.first!.layer.borderWidth = 3
             scrollView.subviews.first!.layer.borderColor = UIColor.purple.cgColor
         }
-
+        
+        
         scrollView.delegate = self
         scrollView.contentInsetAdjustmentBehavior = .never
-        newsCardContentView.viewModel = newsCardViewModel
+        newsCardContentView.viewModel = cardViewModel
         newsCardContentView.setFontState(isHighlighted: isFontStateHighlighted)
-
+        
         dismissalPanGesture.addTarget(self, action: #selector(handleDismissalPan(gesture:)))
         dismissalPanGesture.delegate = self
-
+        
         dismissalScreenEdgePanGesture.addTarget(self, action: #selector(handleDismissalPan(gesture:)))
         dismissalScreenEdgePanGesture.delegate = self
 
@@ -92,24 +93,25 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
         view.addGestureRecognizer(dismissalPanGesture)
         view.addGestureRecognizer(dismissalScreenEdgePanGesture)
     }
-
+    
     func didSuccessfullyDragDownToDismiss() {
-        newsCardViewModel = unhighlightedCardViewModel
+        cardViewModel = unhighlightedCardViewModel
         dismiss(animated: true)
     }
-
-    func userWillCancelDissmissalByDraggingToTop(velocityY: CGFloat) {}
-
+    
+    func userWillCancelDimissalByDraggingToTop(velocityY: CGFloat) {}
+    
     func didCancelDismissalTransition() {
         // Clean up
         interactiveStartingPoint = nil
         dismissalAnimator = nil
         draggingDownToDismiss = false
     }
-
+    
     var interactiveStartingPoint: CGPoint?
     var dismissalAnimator: UIViewPropertyAnimator?
-
+    
+    
     // This handles both screen edge and dragdown pan. As screen edge pan is a subclass of pan gesture, this input param works.
     @objc func handleDismissalPan(gesture: UIPanGestureRecognizer) {
 
@@ -201,21 +203,24 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
             fatalError("Impossible gesture state? \(gesture.state.rawValue)")
         }
     }
-
+    
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        
         scrollView.scrollIndicatorInsets = .init(top: newsCardContentView.bounds.height, left: 0, bottom: 0, right: 0)
+        
         if GlobalConstants.isEnabledTopSafeAreaInsetsFixOnCardDetailViewController {
             self.additionalSafeAreaInsets = .init(top: max(-view.safeAreaInsets.top,0), left: 0, bottom: 0, right: 0)
         }
     }
-
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if draggingDownToDismiss || (scrollView.isTracking && scrollView.contentOffset.y < 0) {
+        if draggingDownToDismiss || (scrollView.isTracking && scrollView.contentOffset.y < 0){
             draggingDownToDismiss = true
             scrollView.contentOffset = .zero
         }
-
+        
         scrollView.showsVerticalScrollIndicator = !draggingDownToDismiss
     }
 
@@ -226,11 +231,6 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
             scrollView.contentOffset = .zero
         }
     }
-
-//    override var statusBarAnimatableConfig: StatusBarAnimatableConfig {
-//        return StatusBarAnimatableConfig(prefersHidden: true,
-//                                         animation: .slide)
-//    }
 }
 
 extension CardDetailViewController: UIGestureRecognizerDelegate {

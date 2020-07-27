@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 struct NewsArticleModel: Codable{
@@ -32,4 +33,33 @@ struct Source: Codable {
 
 struct TestResults: Codable{
     let totalResults: Int
+}
+
+
+// MARK: - Convert NewsArticleModel to ViewModel
+extension NewsArticleModel {
+    func toNewsCardContentViewModel() -> NewsCardContentViewModel {
+        let contentImage = getImageFromUrl(url: self.urlToImage)
+        
+        var newsTextContent = " "
+        if let newsTextContentUnwrap = self.content {
+            newsTextContent = newsTextContentUnwrap
+        }
+        
+        return NewsCardContentViewModel(title: self.title,
+                                        publication: self.source.name,
+                                        image: contentImage!,
+                                        summary: self.description!,
+                                        textContent: newsTextContent)
+    }
+    
+    private func getImageFromUrl(url: String?) -> UIImage?{
+        if let data = try? Data(contentsOf: URL(string: url!)!){
+            return UIImage(data: data)?.resize(toWidth: UIScreen.main.bounds.size.width * (1/GlobalConstants.cardHighlightedFactor))
+        }
+        else {
+            print("Fail to get Image")
+            return UIImage()
+        }
+    }
 }
