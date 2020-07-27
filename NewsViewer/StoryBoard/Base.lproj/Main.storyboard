@@ -54,5 +54,97 @@
             </objects>
             <point key="canvasLocation" x="-49" y="787"/>
         </scene>
+        <!--Card Detail View Controller-->
+        <scene sceneID="VqB-3d-zoP">
+            <objects>
+                <viewController id="tsw-ja-Zk5" customClass="CardDetailViewController" customModule="NewsViewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Izt-o0-wYT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d88-VW-Kn7" userLabel="topmost guide view">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="wir-WL-wBn"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="AKD-HQ-WpG">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GrI-mq-RaG" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yqw-MJ-iFF" userLabel="Card Layout Standin View">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="538"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lwj-2U-GQ8" customClass="NewsCardContentView" customModule="NewsViewer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="538"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" secondItem="lwj-2U-GQ8" secondAttribute="width" multiplier="1.3:1" priority="999" id="cho-ks-tp2"/>
+                                                </constraints>
+                                            </view>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fDu-TJ-gsa">
+                                                <rect key="frame" x="0.0" y="128" width="414" height="0.0"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Yqw-MJ-iFF" firstAttribute="centerX" secondItem="GrI-mq-RaG" secondAttribute="centerX" id="6Qc-9p-9wk"/>
+                                            <constraint firstItem="Yqw-MJ-iFF" firstAttribute="height" secondItem="lwj-2U-GQ8" secondAttribute="height" id="8MS-tE-nUf"/>
+                                            <constraint firstItem="fDu-TJ-gsa" firstAttribute="top" secondItem="Yqw-MJ-iFF" secondAttribute="bottom" id="DMK-N4-ZYG"/>
+                                            <constraint firstItem="Yqw-MJ-iFF" firstAttribute="width" secondItem="lwj-2U-GQ8" secondAttribute="width" id="DQJ-g0-6Kj"/>
+                                            <constraint firstAttribute="bottom" secondItem="fDu-TJ-gsa" secondAttribute="bottom" id="IHE-pf-Lk3"/>
+                                            <constraint firstItem="lwj-2U-GQ8" firstAttribute="top" secondItem="GrI-mq-RaG" secondAttribute="top" priority="999" id="OoG-dI-MeG"/>
+                                            <constraint firstAttribute="trailing" secondItem="fDu-TJ-gsa" secondAttribute="trailing" id="QNr-Dt-1oZ"/>
+                                            <constraint firstItem="fDu-TJ-gsa" firstAttribute="leading" secondItem="GrI-mq-RaG" secondAttribute="leading" id="XeJ-JZ-OQL"/>
+                                            <constraint firstItem="lwj-2U-GQ8" firstAttribute="leading" secondItem="GrI-mq-RaG" secondAttribute="leading" id="Z2S-ly-Lxp"/>
+                                            <constraint firstItem="Yqw-MJ-iFF" firstAttribute="top" secondItem="GrI-mq-RaG" secondAttribute="top" id="cuy-gg-hnn"/>
+                                            <constraint firstAttribute="trailing" secondItem="lwj-2U-GQ8" secondAttribute="trailing" id="z8g-86-3OA"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="GrI-mq-RaG" firstAttribute="top" secondItem="AKD-HQ-WpG" secondAttribute="top" id="ShZ-cF-N2l"/>
+                                    <constraint firstAttribute="bottom" secondItem="GrI-mq-RaG" secondAttribute="bottom" id="axK-K8-xia"/>
+                                    <constraint firstItem="GrI-mq-RaG" firstAttribute="leading" secondItem="AKD-HQ-WpG" secondAttribute="leading" id="nwo-A6-ORW"/>
+                                    <constraint firstAttribute="trailing" secondItem="GrI-mq-RaG" secondAttribute="trailing" id="tMC-zM-oE4"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="l4R-wU-ZhL"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="GrI-mq-RaG" firstAttribute="width" secondItem="Izt-o0-wYT" secondAttribute="width" id="0wc-N3-UhC"/>
+                            <constraint firstAttribute="trailing" secondItem="AKD-HQ-WpG" secondAttribute="trailing" id="DQu-br-Bwf"/>
+                            <constraint firstAttribute="bottom" secondItem="AKD-HQ-WpG" secondAttribute="bottom" id="Eu4-cN-mSy"/>
+                            <constraint firstItem="lwj-2U-GQ8" firstAttribute="top" relation="lessThanOrEqual" secondItem="d88-VW-Kn7" secondAttribute="top" id="aTa-SE-YxR"/>
+                            <constraint firstAttribute="trailing" secondItem="d88-VW-Kn7" secondAttribute="trailing" id="fev-Dp-isA"/>
+                            <constraint firstItem="OVY-g6-ZAD" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lwj-2U-GQ8" secondAttribute="bottom" id="jgW-YC-eZl"/>
+                            <constraint firstItem="d88-VW-Kn7" firstAttribute="leading" secondItem="Izt-o0-wYT" secondAttribute="leading" id="n74-lV-klf"/>
+                            <constraint firstItem="AKD-HQ-WpG" firstAttribute="top" secondItem="Izt-o0-wYT" secondAttribute="top" id="pIw-MJ-97A"/>
+                            <constraint firstItem="d88-VW-Kn7" firstAttribute="top" secondItem="Izt-o0-wYT" secondAttribute="top" id="wAG-wY-dMY"/>
+                            <constraint firstItem="AKD-HQ-WpG" firstAttribute="leading" secondItem="Izt-o0-wYT" secondAttribute="leading" id="wKo-gS-qYa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OVY-g6-ZAD"/>
+                    </view>
+                    <connections>
+                        <outlet property="cardBottomToRootBottomConstraint" destination="jgW-YC-eZl" id="BX9-EJ-qct"/>
+                        <outlet property="newsCardContentView" destination="lwj-2U-GQ8" id="1g7-DQ-sdl"/>
+                        <outlet property="scrollView" destination="AKD-HQ-WpG" id="hEg-Wu-j9F"/>
+                        <outlet property="textView" destination="fDu-TJ-gsa" id="dey-t0-Xqy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e8F-rz-SWF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-57" y="1432"/>
+        </scene>
     </scenes>
 </document>

@@ -17,11 +17,17 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
     // When animating detail view controller to be full-screen size, it should gradually expands along the bottom edge.
     //
     // ***But we dismiss disable this after presenting***
+    
+    
+    
     @IBOutlet weak var cardBottomToRootBottomConstraint: NSLayoutConstraint!
-
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var newsCardContentView: NewsCardContentView!
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var scrollView: UIScrollView!
+    
+
     
     var newsCardViewModel: NewsCardContentViewModel! {
         didSet {

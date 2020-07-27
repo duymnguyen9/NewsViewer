@@ -22,9 +22,6 @@ class NewsHeaderCellView: UICollectionReusableView {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, LLLL dd"
         let nameOfMonth = dateFormatter.string(from: date).uppercased()
-        
-        
-        
         dateText.text = nameOfMonth
     }
 }

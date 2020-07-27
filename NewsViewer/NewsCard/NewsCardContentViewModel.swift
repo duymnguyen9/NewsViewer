@@ -15,8 +15,13 @@ struct NewsCardContentViewModel {
     let summary: String
     let textContent: String
     
-    //FIXME: Add selectedImage function to resize image for Card Detail
-//    func selectedImage() -> NewsCardContentViewModel {
-//
-//    }
+    func highlightedImage() -> NewsCardContentViewModel {
+        let scaledImage = image.resize(toWidth: image.size.width * GlobalConstants.cardHighlightedFactor)
+        
+        return NewsCardContentViewModel(title: title,
+                                        publication: publication,
+                                        image: scaledImage,
+                                        summary: summary,
+                                        textContent: textContent)
+    }
 }
