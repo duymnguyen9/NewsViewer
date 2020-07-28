@@ -16,25 +16,13 @@ class HomeViewController: UIViewController {
     
     var newsCardContentViewModels: Array<NewsCardContentViewModel> = Array<NewsCardContentViewModel>()
     
-    //TESTING:
-    var homeCellHeight: CGFloat = 0.0
-    var homeCellWidth: CGFloat = 0.0
-    
-    // END TESTING
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let nib = UINib(nibName: "NewsHeaderCellView", bundle: nil)
-        
-        collectionView.register(nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "newsHeaderCellView")
-        
-        
+
         // Make it responds to highlight state faster
         collectionView.delaysContentTouches = false
         
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            print("setting layout")
             layout.minimumLineSpacing = 30
             layout.minimumInteritemSpacing = 0
             layout.sectionInset = .init(top: 20, left: 0, bottom: 64, right: 0)
@@ -42,12 +30,12 @@ class HomeViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.clipsToBounds = false
-        collectionView.register(UINib(nibName: "\(NewsCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: "newsCard")
+        
+        registerXib()
         
         
         
         newsCardContentViewModels = getDataFromNewsApi()
-        print("models count: \(newsCardContentViewModels.count)")
     }
     
     
@@ -71,6 +59,15 @@ class HomeViewController: UIViewController {
         }
         
         return viewModels
+    }
+    
+    func registerXib() {
+        collectionView.register(UINib(nibName: "\(NewsHeaderCellView.self)", bundle: nil),
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: "newsHeaderCellView")
+
+        collectionView.register(UINib(nibName: "\(NewsCollectionViewCell.self)", bundle: nil),
+                                forCellWithReuseIdentifier: "newsCard")
     }
 }
 
