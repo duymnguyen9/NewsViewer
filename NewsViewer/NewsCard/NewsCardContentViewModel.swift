@@ -14,14 +14,17 @@ struct NewsCardContentViewModel {
     let image: UIImage
     let summary: String
     let textContent: String
+    let publishedDate: String
     
     func highlightedImage() -> NewsCardContentViewModel {
-        let scaledImage = image.resize(toWidth: image.size.width * GlobalConstants.cardHighlightedFactor)
+        let scaledImage = image
+//        let scaledImage = image.resizeHighlight(toHeight: image.size.width * GlobalConstants.cardHeightByWidthRatio)
         
         return NewsCardContentViewModel(title: title,
                                         publication: publication,
                                         image: scaledImage,
                                         summary: summary,
-                                        textContent: textContent)
+                                        textContent: textContent,
+                                        publishedDate: publishedDate)
     }
 }

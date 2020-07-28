@@ -16,6 +16,12 @@ class HomeViewController: UIViewController {
     
     var newsCardContentViewModels: Array<NewsCardContentViewModel> = Array<NewsCardContentViewModel>()
     
+    //TESTING:
+    var homeCellHeight: CGFloat = 0.0
+    var homeCellWidth: CGFloat = 0.0
+    
+    // END TESTING
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,18 +68,6 @@ class HomeViewController: UIViewController {
         
         return viewModels
     }
-    
-    private func getImageFromUrl(url: String?) -> UIImage?{
-        if let data = try? Data(contentsOf: URL(string: url!)!){
-            print("Got images!")
-            print("width: \(UIScreen.main.bounds.size.width * (1/GlobalConstants.cardHighlightedFactor))")
-            return UIImage(data: data)?.resize(toWidth: UIScreen.main.bounds.size.width * (1/GlobalConstants.cardHighlightedFactor))
-        }
-        else {
-            print("Fail to get Image")
-            return UIImage()
-        }
-    }
 }
 
 
@@ -105,10 +99,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 // MARK: - UICollectioNViewDelegateFlowLayout
 extension HomeViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cardHorizontalOffset: CGFloat = 20
-        let cardHeightByWidthRatio: CGFloat = 1.1
-        let width = collectionView.bounds.size.width - 2 * cardHorizontalOffset
-        let height: CGFloat = width * cardHeightByWidthRatio
+        
+        let width = collectionView.bounds.size.width - 2 * GlobalConstants.cardHorizontalOffset
+        let height: CGFloat = width * GlobalConstants.cardHeightByWidthRatio
         return CGSize(width: width, height: height)
     }
     
@@ -152,7 +145,7 @@ extension HomeViewController {
         vc.transitioningDelegate = transition
         
         // If 'modalPresentationStyle' is not ".fullscreen', this should be set to true to make status bar depends on presented vc.
-        vc.modalPresentationCapturesStatusBarAppearance = true
+        vc.modalPresentationCapturesStatusBarAppearance = false
         vc.modalPresentationStyle = .custom
         
         present(vc, animated: true, completion: { [unowned cell] in

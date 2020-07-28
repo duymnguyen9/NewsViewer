@@ -27,6 +27,12 @@ enum GlobalConstants {
     static let isEnabledAllowsUserInteractionWhileHighlightingCard = true
 
     static let isEnabledDebugShowTimeTouch = true
+    
+    static let cardHorizontalOffset: CGFloat = 20
+    static let cardHeightByWidthRatio: CGFloat = 1.1
+    
+    //TESTING
+    static let aspectRatioNewsImage: CGFloat = 10.0 / 7.0
 }
 
 extension GlobalConstants {

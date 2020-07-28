@@ -16,25 +16,97 @@ extension UIView {
             self.rightAnchor.constraint(equalTo: view.rightAnchor, constant: right),
             self.topAnchor.constraint(equalTo: view.topAnchor, constant: top),
             self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: bottom)
-            ])
+        ])
     }
 }
 
 extension UIImage {
     /// Resize UIImage to new width keeping the image's aspect ratio.
-    func resize(toWidth scaledToWidth: CGFloat) -> UIImage {
+    
+    // TODO: - Delete this if not used
+    //    func resize(toWidth scaledToWidth: CGFloat) -> UIImage {
+    //        let image = self
+    //        let oldWidth = image.size.width
+    //        let scaleFactor = scaledToWidth / oldWidth
+    //
+    //        let newHeight = image.size.height * scaleFactor
+    //        let newWidth = oldWidth * scaleFactor
+    //
+    //        let scaledSize = CGSize(width:newWidth, height:newHeight)
+    //        UIGraphicsBeginImageContextWithOptions(scaledSize, true, image.scale)
+    //        image.draw(in: CGRect(x: 0, y: 0, width: scaledSize.width, height: scaledSize.height))
+    //        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+    //        UIGraphicsEndImageContext()
+    //        return scaledImage!
+    //    }
+    
+//    func resize(screenWidth: CGFloat) -> UIImage {
+//        let image = self
+//        var scaledSize = CGSize.init()
+//        
+//        // If Width >= height, scale down to screen height to screen width and vice versa
+//        if image.size.width >= image.size.height {
+//            let oldHeight  = image.size.height
+//            let scaledFactor = screenWidth / oldHeight
+//            
+//            let newWidth = image.size.width * scaledFactor
+//            let newHeight = oldHeight * scaledFactor
+//            
+//            scaledSize = CGSize(width:newWidth, height:newHeight)
+//        } else {
+//            let oldWidth = image.size.width
+//            let scaleFactor = screenWidth / oldWidth
+//            
+//            let newHeight = image.size.height * scaleFactor
+//            let newWidth = oldWidth * scaleFactor
+//            
+//            scaledSize = CGSize(width:newWidth, height:newHeight)
+//        }
+//        
+//        UIGraphicsBeginImageContextWithOptions(scaledSize, true, image.scale)
+//        image.draw(in: CGRect(x: 0, y: 0, width: scaledSize.width, height: scaledSize.height))
+//        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//        return scaledImage!
+//    }
+    
+    func resize(screenWidth: CGFloat) -> UIImage {
         let image = self
-        let oldWidth = image.size.width
-        let scaleFactor = scaledToWidth / oldWidth
-
-        let newHeight = image.size.height * scaleFactor
-        let newWidth = oldWidth * scaleFactor
-
-        let scaledSize = CGSize(width:newWidth, height:newHeight)
+        var scaledSize = CGSize.init()
+        let expectedHeight = screenWidth / GlobalConstants.aspectRatioNewsImage
+        
+        // If Width >= height, scale down to screen height to screen width and vice versa
+        if image.size.width / image.size.height >= GlobalConstants.aspectRatioNewsImage {
+            
+            print("larger than aspect ratio")
+            let oldHeight  = image.size.height
+            let scaledFactor = expectedHeight / oldHeight
+            
+            let newWidth = image.size.width * scaledFactor
+            let newHeight = oldHeight * scaledFactor
+            
+            scaledSize = CGSize(width:newWidth, height:newHeight)
+        } else {
+            print("smaller than aspect ratio")
+            let oldWidth = image.size.width
+            let scaleFactor = screenWidth / oldWidth
+            
+            let newHeight = image.size.height * scaleFactor
+            let newWidth = oldWidth * scaleFactor
+            
+            scaledSize = CGSize(width:newWidth, height:newHeight)
+        }
+        
         UIGraphicsBeginImageContextWithOptions(scaledSize, true, image.scale)
         image.draw(in: CGRect(x: 0, y: 0, width: scaledSize.width, height: scaledSize.height))
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return scaledImage!
     }
+    
+    
+    private func getScaleSize(expectedHeight: CGFloat, imageSize: CGSize){
+        
+    }
+    
 }

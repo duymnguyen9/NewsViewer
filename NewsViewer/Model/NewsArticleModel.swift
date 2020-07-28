@@ -46,16 +46,23 @@ extension NewsArticleModel {
             newsTextContent = newsTextContentUnwrap
         }
         
+        
+        
+        
         return NewsCardContentViewModel(title: self.title,
                                         publication: self.source.name,
                                         image: contentImage!,
                                         summary: self.description!,
-                                        textContent: newsTextContent)
+                                        textContent: newsTextContent,
+                                        publishedDate: publishedAt)
     }
     
     private func getImageFromUrl(url: String?) -> UIImage?{
         if let data = try? Data(contentsOf: URL(string: url!)!){
-            return UIImage(data: data)?.resize(toWidth: UIScreen.main.bounds.size.width * (1/GlobalConstants.cardHighlightedFactor))
+           // TODO: - See if need to delete
+//            return UIImage(data: data)?.resize(toWidth: UIScreen.main.bounds.size.width * (1/GlobalConstants.cardHighlightedFactor))
+            return UIImage(data: data)?.resize(screenWidth: UIScreen.main.bounds.size.width)
+
         }
         else {
             print("Fail to get Image")

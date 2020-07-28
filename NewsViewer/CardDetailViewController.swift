@@ -27,6 +27,7 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var newsCardContentView: NewsCardContentView!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var summary: UILabel!
     
     var cardViewModel: NewsCardContentViewModel! {
         didSet {
@@ -77,7 +78,9 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         scrollView.contentInsetAdjustmentBehavior = .never
         newsCardContentView.viewModel = cardViewModel
-        newsCardContentView.setFontState(isHighlighted: isFontStateHighlighted)
+        
+        textView.text = cardViewModel.textContent
+        summary.text = cardViewModel.summary
         
         dismissalPanGesture.addTarget(self, action: #selector(handleDismissalPan(gesture:)))
         dismissalPanGesture.delegate = self

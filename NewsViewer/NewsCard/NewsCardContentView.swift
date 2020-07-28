@@ -42,9 +42,9 @@ import UIKit
     
     private func cardContentSetup() {
         // make the background image stays still at the center while animating
-        imageView.contentMode = .center
+//        imageView.contentMode = .center
         
-        //        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .center
         setFontState(isHighlighted: false)
     }
     
@@ -69,11 +69,11 @@ import UIKit
     
     func setFontState(isHighlighted: Bool){
         if isHighlighted {
-            titleLabel.font = UIFont.systemFont(ofSize: 25 * GlobalConstants.cardHighlightedFactor, weight: .bold)
-            publicationLabel.font = UIFont.systemFont(ofSize: 18 * GlobalConstants.cardHighlightedFactor, weight: .semibold)
+            titleLabel.font = UIFont.systemFont(ofSize: 23, weight: .bold)
+            publicationLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         } else {
-            titleLabel.font = UIFont.systemFont(ofSize: 25, weight: .bold)
-            publicationLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+            titleLabel.font = UIFont.systemFont(ofSize: 23 * GlobalConstants.cardHighlightedFactor, weight: .bold)
+            publicationLabel.font = UIFont.systemFont(ofSize: 16 * GlobalConstants.cardHighlightedFactor, weight: .semibold)
         }
     }
 }
