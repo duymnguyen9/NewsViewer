@@ -29,11 +29,9 @@ final class NewsCollectionViewCell: UICollectionViewCell {
     }
 
     override func awakeFromNib() {
-        newsCardContentView.layer.cornerRadius = 16
-        newsCardContentView.layer.masksToBounds = true
         backgroundColor = .clear
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.2
+        layer.shadowOpacity = 0.3
         layer.shadowOffset = .init(width: 0, height: 4)
         layer.shadowRadius = 12
     }

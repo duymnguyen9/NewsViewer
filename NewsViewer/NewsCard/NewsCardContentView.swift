@@ -15,6 +15,7 @@ import UIKit
             publicationLabel.text = viewModel?.publication
             titleLabel.text = viewModel?.title
             imageView.image = viewModel?.image
+            date.text = viewModel?.publishedDate
         }
     }
     
@@ -28,6 +29,7 @@ import UIKit
     
     @IBOutlet weak var imageToTrailingAnchor: NSLayoutConstraint!
     @IBOutlet weak var imageToBottomAnchor: NSLayoutConstraint!
+    @IBOutlet weak var date: UILabel!
     
     @IBInspectable var backgroundImage: UIImage? {
         get {
@@ -46,6 +48,8 @@ import UIKit
         
         imageView.contentMode = .center
         setFontState(isHighlighted: false)
+        self.layer.cornerRadius = 20
+        self.layer.masksToBounds = true
     }
     
     

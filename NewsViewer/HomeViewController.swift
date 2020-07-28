@@ -24,14 +24,18 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let nib = UINib(nibName: "NewsHeaderCellView", bundle: nil)
+        
+        collectionView.register(nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "newsHeaderCellView")
+        
         
         // Make it responds to highlight state faster
         collectionView.delaysContentTouches = false
-
+        
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             print("setting layout")
-            layout.minimumLineSpacing = 20
+            layout.minimumLineSpacing = 30
             layout.minimumInteritemSpacing = 0
             layout.sectionInset = .init(top: 20, left: 0, bottom: 64, right: 0)
         }
@@ -42,16 +46,16 @@ class HomeViewController: UIViewController {
         
         
         
-        newsCardContentViewModels = getTestData()
+        newsCardContentViewModels = getDataFromNewsApi()
         print("models count: \(newsCardContentViewModels.count)")
     }
-
     
     
-    func getTestData() -> Array<NewsCardContentViewModel> {
+    
+    func getDataFromNewsApi() -> Array<NewsCardContentViewModel> {
         let dataService = NewsDataProvider()
-        //        dataService.fetchDataFromNewsAPI()
-        dataService.readLocalFile()
+        dataService.fetchDataFromNewsAPI()
+//        dataService.readLocalFile()
         return getNewsCardContentViewModels(data: dataService.newsData)
         
     }
@@ -92,7 +96,22 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.newsCardContentView?.viewModel = newsCardContentViewModels[indexPath.row]
     }
     
-    
+    // Adding header by using SupplementaryView
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: "newsHeaderCellView",
+                for: indexPath) as? NewsHeaderCellView
+                else {
+                    fatalError("Invalid view type")
+            }
+            return headerView
+        default:
+            assert(false, "Invalid element type")
+        }
+    }
 }
 
 
@@ -103,6 +122,10 @@ extension HomeViewController {
         let width = collectionView.bounds.size.width - 2 * GlobalConstants.cardHorizontalOffset
         let height: CGFloat = width * GlobalConstants.cardHeightByWidthRatio
         return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

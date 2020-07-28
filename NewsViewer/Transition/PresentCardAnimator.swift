@@ -80,6 +80,9 @@ final class PresentCardTransitionDriver {
 
         // Temporary container view for animation
         let animatedContainerView = UIView()
+        animatedContainerView.layer.cornerRadius = 20
+        animatedContainerView.layer.masksToBounds = true
+        
         animatedContainerView.translatesAutoresizingMaskIntoConstraints = false
         if GlobalConstants.isEnabledDebugAnimatingViews {
             animatedContainerView.layer.borderColor = UIColor.yellow.cgColor
@@ -166,7 +169,8 @@ final class PresentCardTransitionDriver {
         func animateCardDetailViewSizing() {
             cardWidthConstraint.constant = animatedContainerView.bounds.width
             cardHeightConstraint.constant = animatedContainerView.bounds.height
-            cardDetailView.layer.cornerRadius = 0
+            cardDetailView.layer.cornerRadius = 20
+            cardDetailView.layer.masksToBounds = true
             container.layoutIfNeeded()
         }
 

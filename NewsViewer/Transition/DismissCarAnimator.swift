@@ -43,6 +43,14 @@ final class DismissCardAnimator: NSObject, UIViewControllerAnimatedTransitioning
         let cardDetailView = ctx.view(forKey: .from)!
 
         let animatedContainerView = UIView()
+        
+        animatedContainerView.backgroundColor = .clear
+        animatedContainerView.layer.shadowColor = UIColor.black.cgColor
+        animatedContainerView.layer.shadowOpacity = 0.3
+        animatedContainerView.layer.shadowOffset = .init(width: 0, height: 4)
+        animatedContainerView.layer.shadowRadius = 12
+        
+        
         if GlobalConstants.isEnabledDebugAnimatingViews {
             animatedContainerView.layer.borderColor = UIColor.yellow.cgColor
             animatedContainerView.layer.borderWidth = 4
@@ -113,7 +121,7 @@ final class DismissCardAnimator: NSObject, UIViewControllerAnimatedTransitioning
             ctx.completeTransition(success)
         }
 
-        UIView.animate(withDuration: transitionDuration(using: ctx), delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [], animations: {
+        UIView.animate(withDuration: transitionDuration(using: ctx), delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [], animations: {
             animateCardViewBackToPlace()
         }) { (finished) in
             completeEverything()

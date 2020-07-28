@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewsCardContentView" customModule="NewsViewer" customModuleProvider="target">
             <connections>
+                <outlet property="date" destination="SVw-dF-XWY" id="liI-yh-fE5"/>
                 <outlet property="imageToLeadingAnchor" destination="TS0-ia-Cmh" id="9tR-SC-fhw"/>
                 <outlet property="imageToTopAnchor" destination="9MO-zM-kTl" id="zCV-kq-zbX"/>
                 <outlet property="imageToTrailingAnchor" destination="dF4-Nr-o8z" id="0Jc-lt-hoy"/>
@@ -25,24 +26,24 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbG-wz-P4Y">
                     <rect key="frame" x="0.0" y="0.0" width="268" height="321"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dji-sR-ebJ">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="dji-sR-ebJ">
                             <rect key="frame" x="0.0" y="0.0" width="268" height="187.5"/>
                             <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43m-Sl-AsD">
-                            <rect key="frame" x="20" y="251" width="228" height="29"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43m-Sl-AsD">
+                            <rect key="frame" x="20" y="220.5" width="228" height="59.5"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVw-dF-XWY">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVw-dF-XWY">
                             <rect key="frame" x="20" y="285" width="228" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="publication" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIR-PJ-wo8">
-                            <rect key="frame" x="20" y="228" width="228" height="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="publication" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIR-PJ-wo8">
+                            <rect key="frame" x="20" y="197.5" width="228" height="20"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -53,12 +54,12 @@
                         <constraint firstItem="SVw-dF-XWY" firstAttribute="leading" secondItem="Gqe-T0-HUT" secondAttribute="leading" constant="20" id="DTw-Ew-RYY"/>
                         <constraint firstItem="SVw-dF-XWY" firstAttribute="top" secondItem="43m-Sl-AsD" secondAttribute="bottom" priority="999" constant="5" id="Dwg-o4-aVl"/>
                         <constraint firstItem="43m-Sl-AsD" firstAttribute="leading" secondItem="cbG-wz-P4Y" secondAttribute="leading" constant="20" id="Ez6-Qu-588"/>
-                        <constraint firstItem="dji-sR-ebJ" firstAttribute="height" secondItem="cbG-wz-P4Y" secondAttribute="width" multiplier="7:10" id="HIX-bD-aoa"/>
+                        <constraint firstItem="dji-sR-ebJ" firstAttribute="height" relation="lessThanOrEqual" secondItem="cbG-wz-P4Y" secondAttribute="width" multiplier="7:10" priority="999" id="HIX-bD-aoa"/>
                         <constraint firstAttribute="trailing" secondItem="43m-Sl-AsD" secondAttribute="trailing" constant="20" id="P8n-nU-Sz1"/>
                         <constraint firstItem="43m-Sl-AsD" firstAttribute="top" secondItem="YIR-PJ-wo8" secondAttribute="bottom" constant="3" id="Rvb-W9-R8D"/>
                         <constraint firstItem="YIR-PJ-wo8" firstAttribute="leading" secondItem="cbG-wz-P4Y" secondAttribute="leading" constant="20" id="SC8-gk-INT"/>
                         <constraint firstItem="dji-sR-ebJ" firstAttribute="leading" secondItem="cbG-wz-P4Y" secondAttribute="leading" id="TS0-ia-Cmh"/>
-                        <constraint firstItem="YIR-PJ-wo8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dji-sR-ebJ" secondAttribute="bottom" priority="999" id="UM4-rz-Gcv"/>
+                        <constraint firstItem="YIR-PJ-wo8" firstAttribute="top" secondItem="dji-sR-ebJ" secondAttribute="bottom" constant="10" id="UM4-rz-Gcv"/>
                         <constraint firstAttribute="trailing" secondItem="dji-sR-ebJ" secondAttribute="trailing" id="dF4-Nr-o8z"/>
                         <constraint firstAttribute="trailing" secondItem="YIR-PJ-wo8" secondAttribute="trailing" constant="20" id="frX-zl-T6Y"/>
                         <constraint firstItem="Gqe-T0-HUT" firstAttribute="bottom" secondItem="SVw-dF-XWY" secondAttribute="bottom" constant="15" id="gN4-8g-2Vy"/>

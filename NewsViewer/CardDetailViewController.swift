@@ -28,6 +28,7 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var newsCardContentView: NewsCardContentView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var summary: UILabel!
+    @IBOutlet weak var author: UILabel!
     
     var cardViewModel: NewsCardContentViewModel! {
         didSet {
@@ -62,7 +63,7 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
         return pan
     }()
     
-    
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -79,8 +80,10 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentInsetAdjustmentBehavior = .never
         newsCardContentView.viewModel = cardViewModel
         
-        textView.text = cardViewModel.textContent
-        summary.text = cardViewModel.summary
+//        textView.text = cardViewModel.textContent
+        setSummaryText()
+        setTextViewText()
+        author.text = cardViewModel.author
         
         dismissalPanGesture.addTarget(self, action: #selector(handleDismissalPan(gesture:)))
         dismissalPanGesture.delegate = self
@@ -233,6 +236,31 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
         if velocity.y > 0 && scrollView.contentOffset.y <= 0 {
             scrollView.contentOffset = .zero
         }
+    }
+    
+    func setSummaryText() {
+        let paragraphStyle = NSMutableParagraphStyle()//line height size
+        paragraphStyle.lineSpacing = 5.0
+        let attrString = NSMutableAttributedString(string: cardViewModel.summary)
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle,
+                                value:paragraphStyle,
+                                range:NSMakeRange(0, attrString.length))
+        
+        summary.attributedText = attrString
+    }
+    
+    func setTextViewText() {
+        let paragraphStyle = NSMutableParagraphStyle()//line height size
+        paragraphStyle.lineSpacing = 8.0
+        
+        let textAttribute = [NSAttributedString.Key.paragraphStyle: paragraphStyle ,
+                             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 19.0)]
+        
+        let attrString = NSMutableAttributedString(string: cardViewModel.textContent)
+
+        attrString.addAttributes(textAttribute, range:NSMakeRange(0, attrString.length))
+        
+        textView.attributedText = attrString
     }
 }
 

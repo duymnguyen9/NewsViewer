@@ -15,6 +15,7 @@ struct NewsCardContentViewModel {
     let summary: String
     let textContent: String
     let publishedDate: String
+    let author: String
     
     func highlightedImage() -> NewsCardContentViewModel {
         let scaledImage = image
@@ -25,6 +26,7 @@ struct NewsCardContentViewModel {
                                         image: scaledImage,
                                         summary: summary,
                                         textContent: textContent,
-                                        publishedDate: publishedDate)
+                                        publishedDate: publishedDate,
+                                        author: author)
     }
 }
