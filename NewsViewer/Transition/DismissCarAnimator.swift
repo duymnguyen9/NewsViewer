@@ -1,11 +1,3 @@
-//
-//  DismissCardAnimator.swift
-//  AppStoreInteractiveTransition
-//
-//  Created by Wirawit Rueopas on 7/8/18.
-//  Copyright © 2018 Wirawit Rueopas. All rights reserved.
-//
-
 import UIKit
 
 final class DismissCardAnimator: NSObject, UIViewControllerAnimatedTransitioning {
