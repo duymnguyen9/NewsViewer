@@ -52,9 +52,8 @@ class HomeViewController: UIViewController {
     private func getNewsCardContentViewModels(data: Array<NewsArticleModel>) -> Array<NewsCardContentViewModel> {
         var viewModels = Array<NewsCardContentViewModel>()
         
-        // TODO: Change Range back to data
-        for newsArticleModel1 in 0...4 {
-            let newsArticleModel = data[newsArticleModel1]
+        // TODO: Implement Operation Queue to reduce load time at the start of the app
+        for newsArticleModel in data {
             viewModels.append(newsArticleModel.toNewsCardContentViewModel())
         }
         

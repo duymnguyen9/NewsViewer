@@ -169,7 +169,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OVY-g6-ZAD"/>
                     </view>
-                    <navigationItem key="navigationItem" id="a72-aJ-Gcl"/>
                     <connections>
                         <outlet property="author" destination="2vB-2z-R8O" id="9jy-Kx-mT4"/>
                         <outlet property="cardBottomToRootBottomConstraint" destination="1VJ-yZ-miX" id="sX3-fF-bQv"/>
@@ -198,24 +197,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PMZ-Zb-sey" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-62" y="2077"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="wlR-bF-jbu">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BOq-HD-9Fs" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uhm-Bu-DnO">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="tsw-ja-Zk5" kind="relationship" relationship="rootViewController" id="RFn-Qy-kxG"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4kR-4f-AyP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="852.17391304347836" y="1431.6964285714284"/>
         </scene>
     </scenes>
 </document>

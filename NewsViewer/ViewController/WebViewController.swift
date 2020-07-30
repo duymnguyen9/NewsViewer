@@ -14,7 +14,6 @@ class WebViewController: UIViewController {
     var webView: WKWebView!
     var progressView: UIProgressView!
     
-    // TODO: Add URL from CardDetailViewController
     var url: URL!
     
     override func loadView() {

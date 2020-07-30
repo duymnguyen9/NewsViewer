@@ -23,6 +23,8 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var summary: UILabel!
     @IBOutlet weak var author: UILabel!
     
+    let transitionLayer: CALayer = CALayer()
+    
     var cardViewModel: NewsCardContentViewModel! {
         didSet {
             if self.newsCardContentView != nil {
@@ -93,9 +95,10 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
         loadViewIfNeeded()
         view.addGestureRecognizer(dismissalPanGesture)
         view.addGestureRecognizer(dismissalScreenEdgePanGesture)
+        
     }
     
-
+    
     
     func didSuccessfullyDragDownToDismiss() {
         cardViewModel = unhighlightedCardViewModel
@@ -266,11 +269,44 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "WebViewController") as? WebViewController {
             vc.url = URL(string: cardViewModel.url)!
             
+            vc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "<", style: .done, target: self, action: #selector(returnToCardDetail))
             
-            // 3: now push it onto the navigation controller
-//          navigationController?.pushViewController(vc, animated: true)
-            present(vc, animated: true)
+            let nvc = UINavigationController(rootViewController: vc)
+            nvc.modalPresentationStyle = .overFullScreen
+            
+            transitionLayer.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            transitionLayer.backgroundColor = UIColor.white.cgColor
+            
+            view.window!.layer.addSublayer(transitionLayer)
+            
+            view.window!.layer.add(transitionSetup(isPush: true), forKey: kCATransition)
+            
+
+            present(nvc, animated: false)
+            
+//
+            
+//            present(vc, animated: false)
+            
         }
+    }
+    
+    @objc func returnToCardDetail() {
+        transitionLayer.removeFromSuperlayer()
+        view.window!.layer.add(transitionSetup(isPush: false), forKey: kCATransition)
+        
+        dismiss(animated: false, completion: nil)
+    }
+    
+    func transitionSetup(isPush: Bool) -> CATransition{
+        
+        let transition = CATransition()
+        transition.duration = 0.2
+        transition.type = .push
+
+        transition.subtype = isPush ? .fromRight : .fromLeft
+        transition.timingFunction = CAMediaTimingFunction(name: .easeIn)
+        return transition
     }
     
     
