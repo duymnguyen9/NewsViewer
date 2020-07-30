@@ -2,7 +2,7 @@ import UIKit
 
 
 class CardDetailViewController: UIViewController, UIScrollViewDelegate {
-
+    
     // This constraint limits card content to not be covered by root view.
     // This is useful to make the card content expands when presenting,
     // as intially the card is fully contained in a smaller environment (card cell).
@@ -12,7 +12,7 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
     
     
     
-
+    
     @IBOutlet weak var cardBottomToRootBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -63,7 +63,7 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
         if GlobalConstants.isEnabledDebugAnimatingViews {
             scrollView.layer.borderWidth = 3
             scrollView.layer.borderColor = UIColor.green.cgColor
-
+            
             scrollView.subviews.first!.layer.borderWidth = 3
             scrollView.subviews.first!.layer.borderColor = UIColor.purple.cgColor
         }
@@ -73,25 +73,44 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentInsetAdjustmentBehavior = .never
         newsCardContentView.viewModel = cardViewModel
         
-//        textView.text = cardViewModel.textContent
+        //        textView.text = cardViewModel.textContent
         setSummaryText()
         setTextViewText()
         author.text = cardViewModel.author
+        
+        getNews?.addTarget(self, action: #selector(navigateToNewsSite), for: .touchUpInside)
         
         dismissalPanGesture.addTarget(self, action: #selector(handleDismissalPan(gesture:)))
         dismissalPanGesture.delegate = self
         
         dismissalScreenEdgePanGesture.addTarget(self, action: #selector(handleDismissalPan(gesture:)))
         dismissalScreenEdgePanGesture.delegate = self
-
+        
         // Make drag down/scroll pan gesture waits til screen edge pan to fail first to begin
         dismissalPanGesture.require(toFail: dismissalScreenEdgePanGesture)
         scrollView.panGestureRecognizer.require(toFail: dismissalScreenEdgePanGesture)
-
+        
         loadViewIfNeeded()
         view.addGestureRecognizer(dismissalPanGesture)
         view.addGestureRecognizer(dismissalScreenEdgePanGesture)
     }
+    
+    // MARK: - Navigation
+    
+    @objc func navigateToNewsSite() {
+        // 1: try loading the "Detail" view controller and typecasting it to be DetailViewController
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "WebViewController") as? WebViewController {
+            // 2: success! Set its selectedImage property
+            //            vc.url = URL(string: "https://hackingwithswift.com")!
+            
+            if navigationController == nil {
+                print("navigationController is not available")
+            }
+            // 3: now push it onto the navigation controller
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     
     func didSuccessfullyDragDownToDismiss() {
         cardViewModel = unhighlightedCardViewModel
@@ -113,16 +132,16 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
     
     // This handles both screen edge and dragdown pan. As screen edge pan is a subclass of pan gesture, this input param works.
     @objc func handleDismissalPan(gesture: UIPanGestureRecognizer) {
-
+        
         let isScreenEdgePan = gesture.isKind(of: DismissalScreenEdgePanGesture.self)
         let canStartDragDownToDismissPan = !isScreenEdgePan && !draggingDownToDismiss
-
+        
         // Don't do anything when it's not in the drag down mode
         if canStartDragDownToDismissPan { return }
-
+        
         let targetAnimatedView = gesture.view!
         let startingPoint: CGPoint
-
+        
         if let p = interactiveStartingPoint {
             startingPoint = p
         } else {
@@ -130,12 +149,12 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
             startingPoint = gesture.location(in: nil)
             interactiveStartingPoint = startingPoint
         }
-
+        
         let currentLocation = gesture.location(in: nil)
         let progress = isScreenEdgePan ? (gesture.translation(in: targetAnimatedView).x / 100) : (currentLocation.y - startingPoint.y) / 100
         let targetShrinkScale: CGFloat = 0.86
         let targetCornerRadius: CGFloat = GlobalConstants.cardCornerRadius
-
+        
         func createInteractiveDismissalAnimatorIfNeeded() -> UIViewPropertyAnimator {
             if let animator = dismissalAnimator {
                 return animator
@@ -150,19 +169,19 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
                 return animator
             }
         }
-
+        
         switch gesture.state {
         case .began:
             dismissalAnimator = createInteractiveDismissalAnimatorIfNeeded()
-
+            
         case .changed:
             dismissalAnimator = createInteractiveDismissalAnimatorIfNeeded()
-
+            
             let actualProgress = progress
             let isDismissalSuccess = actualProgress >= 1.0
-
+            
             dismissalAnimator!.fractionComplete = actualProgress
-
+            
             if isDismissalSuccess {
                 dismissalAnimator!.stopAnimation(false)
                 dismissalAnimator!.addCompletion { [unowned self] (pos) in
@@ -175,7 +194,7 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
                 }
                 dismissalAnimator!.finishAnimation(at: .end)
             }
-
+            
         case .ended, .cancelled:
             if dismissalAnimator == nil {
                 // Gesture's too quick that it doesn't have dismissalAnimator!
@@ -186,11 +205,11 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
             // NOTE:
             // If user lift fingers -> ended
             // If gesture.isEnabled -> cancelled
-
+            
             // Ended, Animate back to start
             dismissalAnimator!.pauseAnimation()
             dismissalAnimator!.isReversed = true
-
+            
             // Disable gesture until reverse closing animation finishes.
             gesture.isEnabled = false
             dismissalAnimator!.addCompletion { [unowned self] (pos) in
@@ -222,7 +241,7 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
         
         scrollView.showsVerticalScrollIndicator = !draggingDownToDismiss
     }
-
+    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         // Without this, when user drag down and lift the finger fast at the top, there'll be some scrolling going on.
         // This check prevents that.
@@ -250,24 +269,13 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
                              NSAttributedString.Key.font: UIFont.systemFont(ofSize: 19.0)]
         
         let attrString = NSMutableAttributedString(string: cardViewModel.textContent)
-
+        
         attrString.addAttributes(textAttribute, range:NSMakeRange(0, attrString.length))
         
         textView.attributedText = attrString
     }
     
-    // MARK: - Navigation
-    
-    func navigateToNewsSite() {
-            // 1: try loading the "Detail" view controller and typecasting it to be DetailViewController
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "WebViewController") as? WebViewController {
-            // 2: success! Set its selectedImage property
-//            vc.url = URL(string: "https://hackingwithswift.com")!
 
-            // 3: now push it onto the navigation controller
-            navigationController?.pushViewController(vc, animated: true)
-        }
-    }
     
 }
 
