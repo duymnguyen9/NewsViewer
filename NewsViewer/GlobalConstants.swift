@@ -6,8 +6,7 @@
 import UIKit
 
 enum GlobalConstants {
-    static let cardHighlightedFactor: CGFloat = 0.90
-    static let statusBarAnimationDuration: TimeInterval = 0.4
+    static let cardHighlightedFactor: CGFloat = 0.95
     static let cardCornerRadius: CGFloat = 16
     static let dismissalAnimationDuration = 0.6
 

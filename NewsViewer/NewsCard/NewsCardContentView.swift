@@ -24,11 +24,7 @@ import UIKit
     @IBOutlet weak var publicationLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
-    @IBOutlet weak var imageToTopAnchor: NSLayoutConstraint!
-    @IBOutlet weak var imageToLeadingAnchor: NSLayoutConstraint!
     
-    @IBOutlet weak var imageToTrailingAnchor: NSLayoutConstraint!
-    @IBOutlet weak var imageToBottomAnchor: NSLayoutConstraint!
     @IBOutlet weak var date: UILabel!
     
     @IBInspectable var backgroundImage: UIImage? {

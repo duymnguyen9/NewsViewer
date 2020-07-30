@@ -32,7 +32,6 @@ extension UIImage {
         // If Width >= height, scale down to screen height to screen width and vice versa
         if image.size.width / image.size.height >= GlobalConstants.aspectRatioNewsImage {
             
-            print("larger than aspect ratio")
             let oldHeight  = image.size.height
             let scaledFactor = expectedHeight / oldHeight
             

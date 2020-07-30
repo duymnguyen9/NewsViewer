@@ -10,9 +10,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewsCardContentView" customModule="NewsViewer" customModuleProvider="target">
             <connections>
                 <outlet property="date" destination="SVw-dF-XWY" id="liI-yh-fE5"/>
-                <outlet property="imageToLeadingAnchor" destination="TS0-ia-Cmh" id="9tR-SC-fhw"/>
-                <outlet property="imageToTopAnchor" destination="9MO-zM-kTl" id="zCV-kq-zbX"/>
-                <outlet property="imageToTrailingAnchor" destination="dF4-Nr-o8z" id="0Jc-lt-hoy"/>
                 <outlet property="imageView" destination="dji-sR-ebJ" id="FPX-Zu-tvX"/>
                 <outlet property="publicationLabel" destination="YIR-PJ-wo8" id="qFR-Hd-nEU"/>
                 <outlet property="titleLabel" destination="43m-Sl-AsD" id="Dtl-dl-TwT"/>
