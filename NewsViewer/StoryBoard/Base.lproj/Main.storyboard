@@ -77,7 +77,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GrI-mq-RaG" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1660.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1710.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yqw-MJ-iFF" userLabel="Card Layout Standin View">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="434.5"/>
@@ -103,19 +103,29 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDu-TJ-gsa">
-                                                <rect key="frame" x="20" y="548.5" width="374" height="1112"/>
+                                                <rect key="frame" x="20" y="598.5" width="374" height="1112"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KlJ-2h-T7u">
+                                                <rect key="frame" x="0.0" y="533.5" width="414" height="50"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="ZrZ-ZC-ESi"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                <state key="normal" title="Get News"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="fDu-TJ-gsa" firstAttribute="top" secondItem="2vB-2z-R8O" secondAttribute="bottom" constant="30" id="1mr-DX-fEf"/>
                                             <constraint firstAttribute="trailing" secondItem="2vB-2z-R8O" secondAttribute="trailing" constant="20" id="9aO-5p-EJS"/>
+                                            <constraint firstItem="fDu-TJ-gsa" firstAttribute="top" secondItem="KlJ-2h-T7u" secondAttribute="bottom" constant="15" id="BwP-BV-pGo"/>
                                             <constraint firstItem="Yqw-MJ-iFF" firstAttribute="top" secondItem="GrI-mq-RaG" secondAttribute="top" id="IBy-L1-WLE"/>
+                                            <constraint firstAttribute="trailing" secondItem="KlJ-2h-T7u" secondAttribute="trailing" id="ItR-7N-WNl"/>
                                             <constraint firstItem="2vB-2z-R8O" firstAttribute="leading" secondItem="GrI-mq-RaG" secondAttribute="leading" constant="20" id="JOR-Zz-cTk"/>
                                             <constraint firstAttribute="trailing" secondItem="G7u-ic-ooz" secondAttribute="trailing" constant="20" id="JPU-Jv-nDf"/>
                                             <constraint firstItem="lwj-2U-GQ8" firstAttribute="leading" secondItem="GrI-mq-RaG" secondAttribute="leading" id="S7d-U3-ndh"/>
@@ -127,6 +137,8 @@
                                             <constraint firstItem="Yqw-MJ-iFF" firstAttribute="width" secondItem="lwj-2U-GQ8" secondAttribute="width" id="dRG-FT-JCN"/>
                                             <constraint firstItem="G7u-ic-ooz" firstAttribute="top" secondItem="Yqw-MJ-iFF" secondAttribute="bottom" constant="30" id="fmo-fh-xlU"/>
                                             <constraint firstAttribute="trailing" secondItem="lwj-2U-GQ8" secondAttribute="trailing" id="hIn-hi-Xat"/>
+                                            <constraint firstItem="KlJ-2h-T7u" firstAttribute="top" secondItem="2vB-2z-R8O" secondAttribute="bottom" constant="15" id="o8I-ro-KgY"/>
+                                            <constraint firstItem="KlJ-2h-T7u" firstAttribute="leading" secondItem="GrI-mq-RaG" secondAttribute="leading" id="oix-vX-2BQ"/>
                                             <constraint firstItem="2vB-2z-R8O" firstAttribute="top" secondItem="G7u-ic-ooz" secondAttribute="bottom" constant="10" id="qOb-Jk-fdL"/>
                                             <constraint firstItem="G7u-ic-ooz" firstAttribute="leading" secondItem="GrI-mq-RaG" secondAttribute="leading" constant="20" id="tTO-Uu-x0R"/>
                                             <constraint firstItem="Yqw-MJ-iFF" firstAttribute="centerX" secondItem="GrI-mq-RaG" secondAttribute="centerX" id="ukh-eM-KEi"/>
@@ -160,6 +172,7 @@
                     <connections>
                         <outlet property="author" destination="2vB-2z-R8O" id="9jy-Kx-mT4"/>
                         <outlet property="cardBottomToRootBottomConstraint" destination="1VJ-yZ-miX" id="sX3-fF-bQv"/>
+                        <outlet property="getNews" destination="KlJ-2h-T7u" id="MAc-en-gTT"/>
                         <outlet property="newsCardContentView" destination="lwj-2U-GQ8" id="1g7-DQ-sdl"/>
                         <outlet property="scrollView" destination="AKD-HQ-WpG" id="hEg-Wu-j9F"/>
                         <outlet property="summary" destination="G7u-ic-ooz" id="cwH-Yf-GQg"/>
@@ -169,6 +182,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e8F-rz-SWF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-57.971014492753625" y="1431.6964285714284"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="thM-gd-kVB">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" id="Xla-aa-5ZC" customClass="WebViewController" customModule="NewsViewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e32-uH-e1w">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="OED-9w-gX4"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PMZ-Zb-sey" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-62" y="2077"/>
         </scene>
     </scenes>
 </document>

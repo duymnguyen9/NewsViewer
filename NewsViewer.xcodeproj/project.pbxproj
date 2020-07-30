@@ -25,6 +25,7 @@
 		079A50B924CA346F0006AA36 /* NewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 079A50B824CA346F0006AA36 /* NewsCollectionViewCell.xib */; };
 		079A50BB24CA3FE30006AA36 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079A50BA24CA3FE30006AA36 /* HomeViewController.swift */; };
 		079A50BF24CA617E0006AA36 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079A50BE24CA617E0006AA36 /* UIView+AutoLayout.swift */; };
+		07ABDF1D24D2496800C14C53 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ABDF1C24D2496800C14C53 /* WebViewController.swift */; };
 		07B2CD6A24CB6522008512F4 /* CardTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2CD6924CB6522008512F4 /* CardTransition.swift */; };
 		07B2CD6C24CB6612008512F4 /* CardPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2CD6B24CB6612008512F4 /* CardPresentationController.swift */; };
 		07B8235424C7B87D0007B85F /* NewsHeaderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8235224C7B87D0007B85F /* NewsHeaderCellView.swift */; };
@@ -56,6 +57,7 @@
 		079A50B824CA346F0006AA36 /* NewsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCollectionViewCell.xib; sourceTree = "<group>"; };
 		079A50BA24CA3FE30006AA36 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		079A50BE24CA617E0006AA36 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		07ABDF1C24D2496800C14C53 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		07B2CD6924CB6522008512F4 /* CardTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTransition.swift; sourceTree = "<group>"; };
 		07B2CD6B24CB6612008512F4 /* CardPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPresentationController.swift; sourceTree = "<group>"; };
 		07B8235224C7B87D0007B85F /* NewsHeaderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderCellView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		0708303224C0E78B000655AF /* NewsViewer */ = {
 			isa = PBXGroup;
 			children = (
+				07ABDF1E24D2497900C14C53 /* ViewController */,
 				07B2CD6824CB645E008512F4 /* Transition */,
 				079A50AA24CA160B0006AA36 /* Utility */,
 				079A50A924CA16000006AA36 /* Extensions */,
@@ -104,8 +107,6 @@
 				078F019724C11C9B00748CD3 /* Service */,
 				078F019424C0FFEA00748CD3 /* Model */,
 				0708303324C0E78B000655AF /* AppDelegate.swift */,
-				079A50BA24CA3FE30006AA36 /* HomeViewController.swift */,
-				07E0500C24CB7E2B0042F059 /* CardDetailViewController.swift */,
 				0708304424C0E78C000655AF /* Info.plist */,
 				0708303C24C0E78B000655AF /* NewsViewer.xcdatamodeld */,
 				078F019C24C1272300748CD3 /* TestData.json */,
@@ -169,6 +170,16 @@
 				079A50AB24CA16470006AA36 /* NibLoadable.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		07ABDF1E24D2497900C14C53 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				079A50BA24CA3FE30006AA36 /* HomeViewController.swift */,
+				07E0500C24CB7E2B0042F059 /* CardDetailViewController.swift */,
+				07ABDF1C24D2496800C14C53 /* WebViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		07B2CD6824CB645E008512F4 /* Transition */ = {
@@ -288,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07ABDF1D24D2496800C14C53 /* WebViewController.swift in Sources */,
 				07E0500F24CB8AEF0042F059 /* DismissCarAnimator.swift in Sources */,
 				07B8235424C7B87D0007B85F /* NewsHeaderCellView.swift in Sources */,
 				07E0500724CB7B9B0042F059 /* PresentCardAnimator.swift in Sources */,

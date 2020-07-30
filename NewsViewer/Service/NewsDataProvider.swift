@@ -24,6 +24,7 @@ class NewsDataProvider {
         if let url = URL(string: urlString){
             if let data = try? Data(contentsOf: url){
                 newsData = parseNewsArticles(json: data)
+                filterNewsData()
             }
         }
     }
@@ -51,9 +52,20 @@ class NewsDataProvider {
         }
         do {                        let data = try Data(contentsOf: mainUrl)
             newsData = parseNewsArticles(json: data)
+            filterNewsData()
         } catch {
             print(error)
         }
+    }
+    
+    func filterNewsData() {
+        var filteredNewsData = [NewsArticleModel]()
+        for model in newsData {
+            if model.urlToImage != nil {
+                filteredNewsData.append(model)
+            }
+        }
+        newsData = filteredNewsData
     }
     
 

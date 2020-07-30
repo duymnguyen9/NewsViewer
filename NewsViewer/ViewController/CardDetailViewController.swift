@@ -17,6 +17,7 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var getNews: UIButton!
     @IBOutlet weak var newsCardContentView: NewsCardContentView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var summary: UILabel!
@@ -254,6 +255,20 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
         
         textView.attributedText = attrString
     }
+    
+    // MARK: - Navigation
+    
+    func navigateToNewsSite() {
+            // 1: try loading the "Detail" view controller and typecasting it to be DetailViewController
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "WebViewController") as? WebViewController {
+            // 2: success! Set its selectedImage property
+//            vc.url = URL(string: "https://hackingwithswift.com")!
+
+            // 3: now push it onto the navigation controller
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
 }
 
 extension CardDetailViewController: UIGestureRecognizerDelegate {

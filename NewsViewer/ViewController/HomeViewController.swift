@@ -42,8 +42,9 @@ class HomeViewController: UIViewController {
     
     func getDataFromNewsApi() -> Array<NewsCardContentViewModel> {
         let dataService = NewsDataProvider()
-        dataService.fetchDataFromNewsAPI()
-//        dataService.readLocalFile()
+//        dataService.fetchDataFromNewsAPI()
+        dataService.readLocalFile()
+        
         return getNewsCardContentViewModels(data: dataService.newsData)
         
     }
@@ -54,7 +55,6 @@ class HomeViewController: UIViewController {
         // TODO: Change Range back to data
         for newsArticleModel1 in 0...4 {
             let newsArticleModel = data[newsArticleModel1]
-            
             viewModels.append(newsArticleModel.toNewsCardContentViewModel())
         }
         
