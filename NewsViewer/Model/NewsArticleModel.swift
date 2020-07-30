@@ -66,7 +66,8 @@ extension NewsArticleModel {
                                         summary: self.description!,
                                         textContent: newsTextContent,
                                         publishedDate: publishedDate,
-                                        author: newsAuthor)
+                                        author: newsAuthor,
+                                        url: url)
     }
     
     private func getImageFromUrl(url: String?) -> UIImage?{

@@ -95,22 +95,7 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
         view.addGestureRecognizer(dismissalScreenEdgePanGesture)
     }
     
-    // MARK: - Navigation
-    
-    @objc func navigateToNewsSite() {
-        // 1: try loading the "Detail" view controller and typecasting it to be DetailViewController
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "WebViewController") as? WebViewController {
-            // 2: success! Set its selectedImage property
-            //            vc.url = URL(string: "https://hackingwithswift.com")!
-            
-            if navigationController == nil {
-                print("navigationController is not available")
-            }
-            // 3: now push it onto the navigation controller
-            navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
+
     
     func didSuccessfullyDragDownToDismiss() {
         cardViewModel = unhighlightedCardViewModel
@@ -275,7 +260,19 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
         textView.attributedText = attrString
     }
     
-
+    // MARK: - Navigation
+    
+    @objc func navigateToNewsSite() {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "WebViewController") as? WebViewController {
+            vc.url = URL(string: cardViewModel.url)!
+            
+            
+            // 3: now push it onto the navigation controller
+//          navigationController?.pushViewController(vc, animated: true)
+            present(vc, animated: true)
+        }
+    }
+    
     
 }
 
