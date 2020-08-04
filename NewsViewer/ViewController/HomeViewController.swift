@@ -42,8 +42,8 @@ class HomeViewController: UIViewController {
     
     func getDataFromNewsApi() -> Array<NewsCardContentViewModel> {
         let dataService = NewsDataProvider()
-//        dataService.fetchDataFromNewsAPI()
-        dataService.readLocalFile()
+        dataService.fetchDataFromNewsAPI()
+//        dataService.readLocalFile()
         
         return getNewsCardContentViewModels(data: dataService.newsData)
         
