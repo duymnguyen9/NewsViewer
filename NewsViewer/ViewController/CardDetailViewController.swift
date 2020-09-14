@@ -281,12 +281,7 @@ class CardDetailViewController: UIViewController, UIScrollViewDelegate {
             
             view.window!.layer.add(transitionSetup(isPush: true), forKey: kCATransition)
             
-
             present(nvc, animated: false)
-            
-//
-            
-//            present(vc, animated: false)
             
         }
     }
